@@ -1,7 +1,6 @@
 //import user model
 
 const User = require("../models/userModel");
-const{schema} = require('../helper/authSchema')
 
 //import jsonwebtoken
 
@@ -86,7 +85,6 @@ module.exports.logIn=(req, res) => {
             }else{
                 res.json({
                 message:"Login Successful! Use below Token to login!",
-                credentials: user,
                 token: jwt.sign({email:user.email, fullName:user.fullName, _id: user._id, role: user.role}, 'RESTfulAPIs')
             });
             }
