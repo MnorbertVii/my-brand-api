@@ -5,6 +5,7 @@
 const express = require("express");
 const swaggerJsdoc = require ('swagger-jsdoc')
 const swaggerUi = require ('swagger-ui-express')
+const cors = require('cors')
 
 
 //import db connection
@@ -37,6 +38,7 @@ const specs = swaggerJsdoc(options);
 
 const app = express();
 
+app.use(cors())
 app.use("/ep-docs", swaggerUi.serve, swaggerUi.setup(specs));
 
 //define port to run express app
