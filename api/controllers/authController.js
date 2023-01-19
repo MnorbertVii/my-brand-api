@@ -57,7 +57,7 @@ module.exports.signUp = async(req, res) => {
     newUser.hash_password = bcrypt.hashSync(req.body.password,  10);
     newUser.save((err, user) => {
         if(err){
-            res.status(500).send({message:err});
+            return res.status(500).send({message:err});
         }
         // user.hash_password=undefined;
         res.status(201).json({
